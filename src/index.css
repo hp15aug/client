@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  scroll-behavior: smooth;
+}
+
+/* styles.css or global.css */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  height: 100vh;
+  width: 100vw;
+  margin: 0rem;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+* {
+  -ms-overflow-style: none;
+}
+
+img{
+  border-radius: 5%;
+}
+.my-img{
+  border-radius: 5%;
+}
+
+.my-btn {
+  color: white;
+  background-color: black;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.my-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgb(249, 250, 251);
+}
+
+.my-btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: -100%;
+  border-radius: 9999px;
+  background-color: #3ab3e1;
+  aspect-ratio: 1;
+  z-index: -10;
+  transition: all 700ms;
+}
+
+.my-btn:hover::before {
+  width: 100%;
+  left: 0;
+  transform: scale(1.5);
+}
+
+.autoShow{
+  animation: autoShowAnimation both;
+  animation-timeline: view(70% 5%);
+
+}
+@keyframes autoShowAnimation{
+  from{
+      opacity: 0;
+      transform: translateY(200px) scale(0.3);
+  }to{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+  }
+}
+
+.autoBLur{
+  animation: autoBLurAnimation linear both;
+  animation-timeline: view();
+}
+@keyframes autoBLurAnimation{
+  0%{
+      filter: blur(40px);
+  }
+  35%, 75%{
+      filter: blur(0px);
+  }
+  100%{
+      filter: blur(40px);
+  }
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(var(--row), 100px);
+  margin-top: 50px;
+  gap: 50px;
+}
+
+.grid-3{
+  --row: 6;
+  font-size: 10em;
+}
+.grid-3 div{
+  grid-column: 2/ 6;
+  text-wrap: nowrap;
+}
+.grid-3 div:nth-child(even){
+  text-align: right;
+}
+.grid-3 div:nth-child(5){
+  grid-column: 1/ 6;
+}
+.grid-3 div:nth-child(4){
+  grid-column: 1/ 7;
+}
+
+
+/* SLIDER ANIMATION */
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%); 
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
